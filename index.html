@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="./index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Readex+Pro&display=swap" rel="stylesheet"> 
+  <script src="./index.js" defer></script>
+  
+  <title>Frontend Mentor | Pomodoro app</title>
+</head>
+<body>
+  <input type="radio" checked hidden name="colors" id="red">
+  <input type="radio"         hidden name="colors" id="blue">
+  <input type="radio"         hidden name="colors" id="purple">
+  <input type="radio" checked hidden name="fonts" id="default">
+  <input type="radio"         hidden name="fonts" id="corinthia">
+  <input type="radio"         hidden name="fonts" id="readex">
+
+<div class="container">
+  <div class="title">
+    pomodoro
+  </div>
+  <div class="mode-select">
+    <div class="modes">
+      <button class="mode pomodoro">pomodoro</button>
+      <button class="mode short-break">short break</button>
+      <button class="mode long-break">long break</button>
+    </div>
+    <div class="mode-select-bar">
+      <!-- <div class="bar-buttom"></div> -->
+      <div class="bar-middle"></div>
+      <div class="bar-top"></div>
+    </div>
+  </div>
+  <div class="timer">
+    <div class="timer-progress">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d='M 50 10 A 40 40 0 1 1 49.9 10' fill="none"/>
+      </svg>
+    </div>
+    <div class="timer-time">
+      <div class="minutes timer-time-text">00</div>
+      <div class="timer-time-text">:</div>
+      <div class="seconds timer-time-text">00</div>
+    </div>
+    <div class="pause-button">
+      <div class="restart-button">RESTART</div>
+      <div class="pause-text">PAUSE</div>
+    </div>
+  </div>
+  <div class="settings">
+    <button class="settings-button">
+      <object data="./assets/icon-settings.svg" type=""></object>
+    </button>
+  </div>
+</div>
+
+<div class="settings-menu hide">
+  <div class="setting-close setting">
+    <div class="setting-close-X"></div>
+  </div>
+  <div class="setting-time setting">
+    <p>TIME (MINUTES)</p>
+    <div>
+      <form action="">
+      <input type="number" value="5"  min="1" id="pomodoro">
+      <input type="number" value="15" min="1" id="short-break">
+      <input type="number" value="25" min="1" id="long-break">
+    </form>
+    </div>
+  </div>
+  <div class="settings-font setting">
+    <p>FONT</p>
+    <div class="setting-container">
+      <label for="default"   class="setting-font">
+        <p>Aa</p>
+      </label>
+      <label for="corinthia" class="setting-font">
+        <p>Aa</p>
+      </label>
+      <label for="readex"    class="setting-font">
+        <p>Aa</p>
+      </label>
+    </div>
+  </div>
+  <div class="settings-color setting">
+    <p>COLOR</p>
+    <div class="setting-container">
+      <label for="red"    class="setting-color" ></label>
+      <label for="blue"   class="setting-color" ></label>
+      <label for="purple" class="setting-color" ></label>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,420 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --body-bgc: #1E213F;
+    --progress: 0;
+    --mode-selector: 0;
+}
+#red:checked ~ .container{
+    --theme: #F87070;
+}
+#blue:checked ~ .container{
+    --theme: #70F3F8;
+}
+#purple:checked ~ .container{
+    --theme: #D881F8;
+}
+
+#default:checked ~ .container{
+    font-family: unset;
+}
+#corinthia:checked ~ .container{
+    font-family: 'Corinthia', cursive;
+}
+#readex:checked ~ .container{
+    font-family: 'Readex Pro', sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #1E213F;
+    background-color: var(--body-bgc);
+}
+
+.container{
+    --theme: red;
+    --font: ;
+
+    position: relative;
+
+    width: 35%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title{
+    font-size: 3vw;
+    text-align: center;
+    margin: 5% 0;
+    color: white;
+    font-family: var(--font);
+}
+
+.mode-select{
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 1 / 0.08;
+
+    border-radius: 50%;
+}
+.mode-select-bar{
+    will-change: left;
+
+    position: absolute;
+
+    height: 100%;
+    width: calc(100% / 3);
+    aspect-ratio: 0.3 / 0.08;
+
+    border-radius: 12% / 50%;
+    margin-left: var(--mode-selector);
+    overflow: hidden;
+    cursor: pointer;
+    
+    pointer-events: none;
+    transition: margin-left 0.75s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.bar-top{
+    will-change: left;
+
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--theme);
+    mix-blend-mode: color-burn;
+}
+.bar-middle{
+    will-change: left;
+
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--theme);
+    mix-blend-mode: screen;
+}
+/* .bar-buttom{
+    will-change: left;
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: white;
+    mix-blend-mode: difference;
+} */
+
+.modes{
+    position: absolute;
+
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #161932;
+    border-radius: 4% / 50%;
+}
+
+.mode{
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    background-color: transparent;
+    border: none;
+
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #D7E0FF;
+    cursor: pointer;
+}
+
+.timer{  
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 1;
+
+    background-image: linear-gradient(-45deg, #2E325A, #0E112A);
+    border-radius: 50%;
+}
+
+.timer-progress{
+    display: grid;
+    place-items: center;
+    
+    fill: #161932;
+}
+
+.timer-progress path{
+    stroke-width: 2px;
+    stroke-dasharray: var(--progress) 252;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    stroke: var(--theme);
+
+    transition: stroke-dasharray 1s linear, stroke 0.2s linear;
+}
+
+.timer-time{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: flex;
+
+    transform: translate(-50%, -50%);
+    
+    font-size: 7vw;
+
+    user-select: none;
+}
+
+.timer-time-text{
+    color: white;
+}
+
+.pause-button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    font-size: 3vw;
+    color: white;
+    letter-spacing: 0.25rem;
+    cursor: pointer;
+    user-select: none;
+
+    transform: translate(-50%, 150%);
+}
+
+.restart-button{
+    position: absolute;
+    bottom: -75%;
+    left: 0;
+    
+    width: 100%;
+
+    transform: rotateX(90deg);
+
+    font-size: 0.6em;
+    color: transparent;
+    text-align: center;
+}
+
+.bar-top, .bar-middle{
+    transition: background-color, 0.2s linear;
+}
+
+.settings{
+    cursor: pointer;
+}
+
+.settings-button object{
+    transition: transform 0.2s linear;
+}
+
+.settings > * {
+    background-color: unset;
+    border: none;
+    
+
+    pointer-events: none;
+    
+}
+
+.settings-menu{
+    position: absolute;
+    top: 25%;
+    margin: auto;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 40%;
+    height: 50%;
+
+    background-color: white;
+    border-radius: 10px;
+}
+
+.setting{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    width: 90%;
+    height: 27%;
+}
+
+.setting-container{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 10%;
+
+    width: 80%;
+    height: 40%;
+
+    margin-left: auto;
+}
+.setting p{
+    flex-shrink: 0;
+    
+    height: min-content;
+
+    letter-spacing: 0.25em;
+}
+
+.setting-close{
+    height: 19%;
+}
+.setting-close-X{
+    position: relative;
+
+    height: 25%;
+    aspect-ratio: 1;
+    
+    margin-left: auto;
+
+    cursor: pointer;
+}
+
+.setting-close-X::before, .setting-close-X::after{
+    content: '';
+
+    position: absolute;
+
+    height: 25%;
+    width: 100%;
+
+    background-color: grey;
+
+    transform: rotate(45deg);
+}
+.setting-close-X::after{
+    transform: rotate(-45deg);
+}
+
+.setting-time{
+    flex-direction: column;
+    justify-content: space-around;
+}
+.setting-time p{
+    align-self: flex-start;
+    letter-spacing: 0.25em;
+}
+.setting-time div{
+    display: flex;
+    justify-content: space-between;
+}
+.setting-time div input{
+    width: 30%;
+    height: 200%;
+
+    background-color: #EFF1FA;
+
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+
+    transform: translateY(-50%);
+}
+
+.setting-font{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+    background-color: grey;
+
+    cursor: pointer;
+}
+
+.setting-font:nth-of-type(1){
+    font-family: '';
+}
+.setting-font:nth-of-type(2){
+    font-family: 'Corinthia', cursive;
+}
+.setting-font:nth-of-type(3){
+    font-family: 'Readex Pro', sans-serif;
+}
+
+
+.setting-color{
+    height: 100%;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+.setting-color:nth-of-type(1){
+    background-color: #F87070;
+}
+.setting-color:nth-of-type(2){
+    background-color: #70F3F8;
+}
+.setting-color:nth-of-type(3){
+    background-color: #D881F8;   
+}
+
+.hide{
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .container{
+        width: 75%;
+    }
+
+    .title{
+        font-size: 7vw;
+    }
+
+    .timer-time{
+        font-size: 15vw;
+    }
+
+    .pause-button{
+        font-size: 6vw;
+    }
+
+    .settings-menu{
+        width: 75%;
+    }
+
+    .setting-color, .setting-font{
+        height: unset;
+        width: 100%;
+    }
+}
